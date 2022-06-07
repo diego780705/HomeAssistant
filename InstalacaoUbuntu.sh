@@ -4,11 +4,21 @@ sudo -i
 
 sleep 2
 
-sudo timedatectl set-timezone America/Sao_Paulo
+timedatectl set-timezone America/Sao_Paulo
 
 sleep 2
 
 apt update -y && sudo apt dist-upgrade -y && sudo apt autoremove -y 
+
+sleep 2
+
+fallocate -l 3G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+swapon --show
+cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 sleep 2
 
