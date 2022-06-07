@@ -69,7 +69,7 @@ systemctl enable firewalld
 
 sleep 2
 
-firewall-cmd --permanent --add-port=1-9999/tcp
+firewall-cmd --permanent --add-port=1-65535/tcp
 
 sleep 2
 
