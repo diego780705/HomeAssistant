@@ -22,11 +22,6 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 sleep 2
 
-docker pull nextcloud
-docker run -d -p 1010:80 nextcloud
-
-sleep 2
-
 apt-get install \
 jq \
 wget \
@@ -63,10 +58,12 @@ dpkg -i homeassistant-supervised.deb
 sleep 2
 
 docker volume create portainer_data
+docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
 sleep 2
 
-docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+docker pull nextcloud
+docker run -d -p 1010:80 nextcloud
 
 sleep 2
 
