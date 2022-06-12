@@ -22,6 +22,11 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 sleep 2
 
+docker pull nextcloud
+docker run -d -p 1010:80 nextcloud
+
+sleep 2
+
 apt-get install \
 jq \
 wget \
