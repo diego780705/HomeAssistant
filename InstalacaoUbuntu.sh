@@ -26,7 +26,7 @@ cp /etc/fstab /etc/fstab.bak
 sleep 1
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
-sleep 3
+sleep 1
 
 apt-get install \
 jq \
@@ -41,7 +41,7 @@ vim \
 openssh-server \
 dbus -y
 
-sleep 3
+sleep 1
 
 curl -fsSL get.docker.com | sh
 
@@ -64,27 +64,27 @@ dpkg -i homeassistant-supervised.deb
 sleep 3
 
 docker volume create portainer_data
-sleep 2
+sleep 1
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
-sleep 3
+sleep 1
 
 docker pull nextcloud
-sleep 2
+sleep 1
 docker run -d -p 1010:80 nextcloud
 
-sleep 2
+sleep 1
 
 systemctl enable firewalld
 
-sleep 2
+sleep 1
 
 firewall-cmd --permanent --add-port=1-65535/tcp
 
-sleep 2
+sleep 1
 
 firewall-cmd --reload
 
-sleep 2
+sleep 1
 
 systemctl start firewalld
