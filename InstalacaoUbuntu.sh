@@ -2,25 +2,31 @@
 
 sudo -i
 
-sleep 2
+sleep 1
 
 timedatectl set-timezone America/Sao_Paulo
 
-sleep 2
+sleep 1
 
 apt update -y && sudo apt dist-upgrade -y && sudo apt autoremove -y 
 
-sleep 2
+sleep 1
 
 fallocate -l 3G /swapfile
+sleep 1
 chmod 600 /swapfile
+sleep 1
 mkswap /swapfile
+sleep 1
 swapon /swapfile
+sleep 1
 swapon --show
+sleep 1
 cp /etc/fstab /etc/fstab.bak
+sleep 1
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
-sleep 2
+sleep 3
 
 apt-get install \
 jq \
@@ -35,34 +41,36 @@ vim \
 openssh-server \
 dbus -y
 
-sleep 2
+sleep 3
 
 curl -fsSL get.docker.com | sh
 
-sleep 2
+sleep 1
 
 wget https://github.com/diego780705/HomeAssistant/raw/a13052d267deeccb6814d47d5f6570ba9536f4e0/os-agent_1.2.2_linux_x86_64.deb
 
-sleep 2
+sleep 1
 
 dpkg -i os-agent_1.2.2_linux_x86_64.deb
 
-sleep 2
+sleep 1
 
 wget https://github.com/diego780705/HomeAssistant/raw/3e54068c33895aaa14229ca0347f3dd428cfd35f/homeassistant-supervised.deb
 
-sleep 2
+sleep 1
 
 dpkg -i homeassistant-supervised.deb
 
-sleep 2
+sleep 3
 
 docker volume create portainer_data
+sleep 2
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
-sleep 2
+sleep 3
 
 docker pull nextcloud
+sleep 2
 docker run -d -p 1010:80 nextcloud
 
 sleep 2
