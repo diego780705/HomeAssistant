@@ -2,9 +2,6 @@
 
 sudo -i
 
-apt list --upgradable
-apt --fix-broken install
-
 timedatectl set-timezone America/Sao_Paulo
 
 apt update -y && sudo apt dist-upgrade -y && sudo apt autoremove -y 
