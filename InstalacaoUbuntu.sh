@@ -36,12 +36,6 @@ dpkg -i os-agent_1.2.2_linux_x86_64.deb
 wget https://github.com/diego780705/HomeAssistant/raw/3e54068c33895aaa14229ca0347f3dd428cfd35f/homeassistant-supervised.deb
 dpkg -i homeassistant-supervised.deb
 
-docker volume create portainer_data
-docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
-
-docker pull nextcloud
-docker run -d -p 1010:80 nextcloud
-
 systemctl enable firewalld
 firewall-cmd --permanent --add-port=1-65535/tcp
 firewall-cmd --reload
