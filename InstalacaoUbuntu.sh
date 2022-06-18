@@ -4,7 +4,7 @@ sudo -i
 
 timedatectl set-timezone America/Sao_Paulo
 
-apt update -y && sudo apt upgrade -y
+apt update -y && apt upgrade -y
 
 fallocate -l 3G /swapfile
 chmod 600 /swapfile
