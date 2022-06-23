@@ -2,9 +2,9 @@
 
 sudo -i
 
-timedatectl set-timezone America/Sao_Paulo
-
 apt dist-upgrade && apt update -y && apt upgrade -y && apt autoremove -y && apt autoclean -y
+
+timedatectl set-timezone America/Sao_Paulo
 
 fallocate -l 3G /swapfile
 chmod 600 /swapfile
