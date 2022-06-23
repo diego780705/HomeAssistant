@@ -2,7 +2,7 @@
 
 sudo -i
 
-apt dist-upgrade -y && apt update -y && apt upgrade -y && apt autoremove -y && apt autoclean -y
+apt update -y && apt upgrade -y && apt autoremove -y
 
 timedatectl set-timezone America/Sao_Paulo
 
