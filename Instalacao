@@ -37,3 +37,7 @@ systemctl enable firewalld
 firewall-cmd --permanent --add-port=1-65535/tcp
 firewall-cmd --reload
 systemctl start firewalld
+
+echo "PermitRootLogin yes" > /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+service ssh restart
