@@ -38,8 +38,14 @@ firewall-cmd --permanent --add-port=1-65535/tcp
 firewall-cmd --reload
 systemctl start firewalld
 
+echo "Include /etc/ssh/sshd_config.d/*.conf" > /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+echo "ChallengeResponseAuthentication no" >> /etc/ssh/sshd_config
+echo "UsePAM yes" >> /etc/ssh/sshd_config
+echo "X11Forwarding yes" >> /etc/ssh/sshd_config
+echo "PrintMotd no" >> /etc/ssh/sshd_config
+echo "AcceptEnv LANG LC_*" >> /etc/ssh/sshd_config
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+echo "Subsystem       sftp    /usr/lib/openssh/sftp-server" >> /etc/ssh/sshd_config
 service ssh restart
-
-passwd root
